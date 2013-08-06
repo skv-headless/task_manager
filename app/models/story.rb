@@ -4,8 +4,7 @@ class Story < ActiveRecord::Base
 
   attr_accessible :description, :title, :assigned_to_id, :status
 
-  validates :title, presence: true
-  validates :description, presence: true
+  validates_presence_of :title, :description
   validates :status, inclusion: STATUSES
 
   def status
