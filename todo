@@ -1,0 +1,21 @@
+simple task manager
+
+Сущности:
+user
+story
+story_comment
+
+Функциональность:
+авторизация http://railscasts.com/episodes/270-authentication-in-rails-3-1;
+создание story, назначение ответственного;
+переход по состояниям: new, started, finished, accepted, rejected (переходы как в PT)  https://github.com/pluginaweek/state_machine;
+комментирование тасков;
+просмотр тасков с фильтром по юзерам, по состояниям;
+дизайн http://twitter.github.com/bootstrap/ (https://github.com/seyhunak/twitter-bootstrap-rails)
+
+Требования и рекомендации:
+тестами должны быть покрыты все контроллеры  (http://guides.rubyonrails.org/testing.html);
+база postgresql
+вьюхи haml (gem haml-rails)
+код под гитом на github;
+приложение на heroku.com;
