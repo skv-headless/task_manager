@@ -13,6 +13,17 @@
   %b Assigned to:
   = @story.assigned_to
 
+%h2 Add comment
+
+- @story.story_comments.includes(:author).each do |comment|
+  %p
+    %strong
+      = comment.author.email
+    = comment.text
+    = link_to 'Delete', story_comment_path(comment), :method => :delete
+%p
+  = render 'story_comments/form'
+
 = link_to 'Edit', edit_story_path(@story)
 \|
 = link_to 'Back', stories_path

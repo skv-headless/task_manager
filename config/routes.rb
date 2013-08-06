@@ -1,4 +1,7 @@
 TaskManager::Application.routes.draw do
+  resources :story_comments
+
+
   resources :stories
 
 

@@ -1,0 +1,21 @@
+%h1 Listing story_comments
+
+%table
+  %tr
+    %th Text
+    %th Author
+    %th
+    %th
+    %th
+
+  - @story_comments.each do |story_comment|
+    %tr
+      %td= story_comment.text
+      %td= story_comment.author
+      %td= link_to 'Show', story_comment
+      %td= link_to 'Edit', edit_story_comment_path(story_comment)
+      %td= link_to 'Destroy', story_comment, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Story comment', new_story_comment_path

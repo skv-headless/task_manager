@@ -4,4 +4,8 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
 
   has_many :stories
+
+  def to_s
+    self.email
+  end
 end
