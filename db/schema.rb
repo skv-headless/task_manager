@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130805192029) do
+ActiveRecord::Schema.define(:version => 20130806174909) do
+
+  create_table "stories", :force => true do |t|
+    t.string   "title"
+    t.integer  "status"
+    t.text     "description"
+    t.integer  "assigned_to_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "stories", ["assigned_to_id"], :name => "index_stories_on_assigned_to_id"
 
   create_table "users", :force => true do |t|
     t.string   "email"

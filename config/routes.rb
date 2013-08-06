@@ -1,4 +1,7 @@
 TaskManager::Application.routes.draw do
+  resources :stories
+
+
   get "sessions/new"
 
   get "sessions/create"
@@ -8,7 +11,7 @@ TaskManager::Application.routes.draw do
   get 'logout' => 'sessions#destroy', :as => 'logout'
   get 'login' => 'sessions#new', :as => 'login'
   get 'signup' => 'users#new', :as => 'signup'
-  root :to => 'sessions#new'
+  root :to => 'stories#index'
 
   resources :users
   resources :sessions
