@@ -11,3 +11,10 @@
  *= require_self
  *= require_tree .
  */
+.content-wrapper{
+    margin-top: 40px;
+}
+.top-user-name{
+    color:#ffffff;
+    padding: 10px 15px 10px;
+}

@@ -14,9 +14,9 @@
     = f.select :status, Story::STATUSES
   .field
     = f.label :description
-    = f.text_area :description
+    = f.text_area :description, :rows => 5
   .field
     = f.label :assigned_to
     = f.collection_select :assigned_to_id, User.all, :id, :email, :include_blank => true
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', :class => 'btn btn-primary'
