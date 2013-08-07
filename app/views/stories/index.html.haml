@@ -27,12 +27,12 @@
   .span4
     %h4
       Filter By:
-    = form_for(:filter, :url => { :action => 'index' }, :html => {:method => :get} ) do |f|
+
+    = form_tag(stories_path, :method => 'get') do
       .field
-        = f.label :status
-        = f.select :status, Story::STATUSES
+        = select_tag('status', options_for_select(Story::STATUSES, params[:status]), :include_blank => true)
       .field
-        = f.label :assigned_to
-        = f.collection_select :assigned_to_id, User.all, :id, :email, :include_blank => true
-      .actions
-        = f.submit 'Filter', :class => 'btn btn-primary'
+        = select_tag('assigned_to', options_from_collection_for_select(User.all, :id, :email, params[:assigned_to]),
+         :include_blank => true)
+      .field
+        = submit_tag('Filter', :class => 'btn btn-primary')
