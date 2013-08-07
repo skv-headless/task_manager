@@ -10,8 +10,8 @@
     = f.label :title
     = f.text_field :title
   .field
-    = f.label :status
-    = f.select :status, Story::STATUSES
+    = f.label :state
+    = f.select :state, Story.state_machine.states.map(&:name)
   .field
     = f.label :description
     = f.text_area :description, :rows => 5

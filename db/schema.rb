@@ -11,15 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130807074204) do
+ActiveRecord::Schema.define(:version => 20130807180159) do
 
   create_table "stories", :force => true do |t|
     t.string   "title"
-    t.string   "status"
     t.text     "description"
     t.integer  "assigned_to_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.string   "state"
   end
 
   add_index "stories", ["assigned_to_id"], :name => "index_stories_on_assigned_to_id"
