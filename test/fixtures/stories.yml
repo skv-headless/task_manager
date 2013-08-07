@@ -2,12 +2,12 @@
 
 one:
   title: MyString
-  status: 1
+  state: 1
   description: MyText
   assigned_to: 
 
-two:
-  title: MyString
-  status: 1
-  description: MyText
-  assigned_to: 
+#two:
+#  title: MyString
+#  state: 1
+#  description: MyText
+#  assigned_to:
