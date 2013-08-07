@@ -4,7 +4,13 @@ class StoriesController < ApplicationController
   # GET /stories
   # GET /stories.json
   def index
-    @stories = Story.all
+    if params['filter']
+      params['filter'].delete_if {|k,v| v.blank?}
+      @stories = Story.where(params['filter'])
+    else
+      @stories = Story.all
+    end
+
 
     respond_to do |format|
       format.html # index.html.erb

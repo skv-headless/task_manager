@@ -1,25 +1,38 @@
-%h1 Listing stories
+.row
+  .span8
+    %h1 Listing stories
 
-%table
-  %tr
-    %th Title
-    %th Status
-    %th Description
-    %th Assigned to
-    %th
-    %th
-    %th
+    %table
+      %tr
+        %th Title
+        %th Status
+        %th Assigned to
+        %th
+        %th
+        %th
 
-  - @stories.each do |story|
-    %tr
-      %td= story.title
-      %td= story.status
-      %td= story.description
-      %td= story.assigned_to
-      %td= link_to 'Show', story
-      %td= link_to 'Edit', edit_story_path(story)
-      %td= link_to 'Destroy', story, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      - @stories.each do |story|
+        %tr
+          %td= story.title
+          %td= story.status
+          %td= story.assigned_to
+          %td= link_to 'Show', story
+          %td= link_to 'Edit', edit_story_path(story)
+          %td= link_to 'Destroy', story, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
+    %br
 
-= link_to 'New Story', new_story_path
+    = link_to 'New Story', new_story_path
+
+  .span4
+    %h4
+      Filter By:
+    = form_for(:filter, :url => { :action => 'index' }, :html => {:method => :get} ) do |f|
+      .field
+        = f.label :status
+        = f.select :status, Story::STATUSES
+      .field
+        = f.label :assigned_to
+        = f.collection_select :assigned_to_id, User.all, :id, :email, :include_blank => true
+      .actions
+        = f.submit 'Filter', :class => 'btn btn-primary'

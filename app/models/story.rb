@@ -8,7 +8,4 @@ class Story < ActiveRecord::Base
   validates_presence_of :title, :description
   validates :status, inclusion: STATUSES
 
-  def status
-    self[:status] ? STATUSES[self[:status]] : ''
-  end
 end
