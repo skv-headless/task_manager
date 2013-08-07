@@ -40,6 +40,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'rack-mini-profiler'
 end
 
 gem 'haml-rails'
