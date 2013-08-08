@@ -45,3 +45,4 @@ end
 
 gem 'haml-rails'
 gem 'state_machine'
+gem 'coveralls', require: false
