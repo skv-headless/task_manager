@@ -1,42 +1,4 @@
 class StoryCommentsController < ApplicationController
-  # GET /story_comments
-  # GET /story_comments.json
-  def index
-    @story_comments = StoryComment.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @story_comments }
-    end
-  end
-
-  # GET /story_comments/1
-  # GET /story_comments/1.json
-  def show
-    @story_comment = StoryComment.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @story_comment }
-    end
-  end
-
-  # GET /story_comments/new
-  # GET /story_comments/new.json
-  def new
-    @story_comment = StoryComment.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @story_comment }
-    end
-  end
-
-  # GET /story_comments/1/edit
-  def edit
-    @story_comment = StoryComment.find(params[:id])
-  end
-
   # POST /story_comments
   # POST /story_comments.json
   def create

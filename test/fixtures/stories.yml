@@ -1,13 +1,23 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  title: MyString
-  state: 1
-  description: MyText
-  assigned_to: 
+  id: 1
+  title: one
+  state: new
+  description: description
+  # seems stupid todo find solution
+  assigned_to_id: 1
 
-#two:
-#  title: MyString
-#  state: 1
-#  description: MyText
-#  assigned_to:
+two:
+  id: 2
+  title: two
+  state: started
+  description: description
+  assigned_to_id: 2
+
+three:
+  id: 3
+  title: three
+  state: new
+  description: description
+  assigned_to_id:

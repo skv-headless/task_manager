@@ -1,45 +1,80 @@
 require 'test_helper'
 
 class StoriesControllerTest < ActionController::TestCase
-  #setup do
-  #  @story = stories(:one)
-  #end
-  #
-  #test "should get index" do
-  #  get :index
-  #  assert_response :success
-  #  assert_not_nil assigns(:stories)
-  #end
-  #
-  #test "should get new" do
-  #  get :new
-  #  assert_response :success
-  #end
-  #
-  #test "should create story" do
-  #  assert_difference('Story.count') do
-  #    post :create, story: { description: @story.description, status: @story.status, title: @story.title }
-  #  end
-  #
-  #  assert_redirected_to story_path(assigns(:story))
-  #end
-  #
-  #test "should show story" do
+  setup do
+    @story = stories(:one)
+    session[:user_id] = users(:one).id
+  end
+
+  test 'should be redirected' do
+    session[:user_id] = nil
+    get :index
+    assert_redirected_to sessions_new_path
+  end
+
+  test 'should get index' do
+    get :index
+    assert_response :success
+    assert_not_nil assigns(:stories)
+  end
+
+  test 'should get filtered index' do
+    get :index, {:assigned_to_id => users(:one).id}
+    assert_select 'table' do |elements|
+      assert_select 'tr', 2 # header + 1 element
+    end
+
+    get :index, {:state => 'new'}
+    assert_select 'table' do |elements|
+      assert_select 'tr', 3 # header + 2 elements
+    end
+  end
+
+  test 'should get new' do
+    get :new
+    assert_response :success
+  end
+
+  test 'should create story' do
+    assert_difference('Story.count') do
+      post :create, story: {
+          description: @story.description,
+          state: @story.state,
+          title: @story.title
+      }
+    end
+
+    assert_redirected_to story_path(assigns(:story))
+  end
+
+  test 'should show story' do
+    get :show, id: @story
+    assert_response :success
+  end
+
+  #test 'should be comments' do
   #  get :show, id: @story
-  #  assert_response :success
-  #end
   #
-  #test "should get edit" do
-  #  get :edit, id: @story
-  #  assert_response :success
+  #  assert_select 'body' do |elements|
+  #    assert_select '.comment', 2
+  #  end
   #end
-  #
-  #test "should update story" do
-  #  put :update, id: @story, story: { description: @story.description, status: @story.status, title: @story.title }
-  #  assert_redirected_to story_path(assigns(:story))
-  #end
-  #
-  #test "should destroy story" do
+
+  test 'should get edit' do
+    get :edit, id: @story
+    assert_response :success
+  end
+
+  test 'should update story' do
+    put :update, id: @story, story: {
+        description: @story.description,
+        state: @story.state,
+        title: @story.title
+    }
+    assert_redirected_to story_path(assigns(:story))
+  end
+
+  #test 'should destroy story' do
   #  assert_difference('Story.count', -1) do
   #    delete :destroy, id: @story
   #  end
