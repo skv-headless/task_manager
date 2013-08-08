@@ -4,8 +4,8 @@
   %b Title:
   = @story.title
 %p
-  %b Status:
-  = @story.status
+  %b State:
+  = @story.state
 %p
   %b Description:
   = @story.description
@@ -15,12 +15,8 @@
 
 %h2 Add comment
 
-- @story.story_comments.includes(:author).each do |comment|
-  %p
-    %strong
-      = comment.author.email
-    = comment.text
-    = link_to 'Delete', story_comment_path(comment), :method => :delete
+= render @story.story_comments.includes(:author)
+
 %p
   = render 'story_comments/form'
 

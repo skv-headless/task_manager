@@ -5,7 +5,7 @@
     %table
       %tr
         %th Title
-        %th Status
+        %th State
         %th Assigned to
         %th
         %th
@@ -14,7 +14,7 @@
       - @stories.each do |story|
         %tr
           %td= story.title
-          %td= story.status
+          %td= story.state
           %td= story.assigned_to
           %td= link_to 'Show', story
           %td= link_to 'Edit', edit_story_path(story)
@@ -30,9 +30,10 @@
 
     = form_tag(stories_path, :method => 'get') do
       .field
-        = select_tag('status', options_for_select(Story::STATUSES, params[:status]), :include_blank => true)
+        = select_tag('state', options_for_select(Story.state_machine.states.map(&:name), params[:state]),
+            :include_blank => true)
       .field
-        = select_tag('assigned_to', options_from_collection_for_select(User.all, :id, :email, params[:assigned_to]),
-         :include_blank => true)
+        = select_tag('assigned_to_id', options_from_collection_for_select(User.all, :id, :email, params[:assigned_to_id]),
+            :include_blank => true)
       .field
         = submit_tag('Filter', :class => 'btn btn-primary')

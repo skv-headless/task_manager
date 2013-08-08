@@ -15,7 +15,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
+  gem 'therubyracer', :platforms => :ruby
   gem 'twitter-bootstrap-rails'
   gem 'uglifier', '>= 1.0.3'
 end
@@ -40,6 +40,8 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'rack-mini-profiler'
 end
 
 gem 'haml-rails'
+gem 'state_machine'

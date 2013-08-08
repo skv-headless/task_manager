@@ -5,7 +5,7 @@ class StoriesController < ApplicationController
   # GET /stories.json
   def index
     if params
-      accepted_params = %w[status assigned_to_id]
+      accepted_params = %w[state assigned_to_id]
       filter_params = params.select{ |k, v| k.in? accepted_params and v.present? }
       @stories = Story.where(filter_params)
     else
