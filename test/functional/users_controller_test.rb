@@ -7,15 +7,16 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test 'should get create' do
-    post :create, {
-        user: {
-          email: 'test@test.ru',
-          password: 'test',
-          password_confirmation: 'test'
+    assert_difference('User.count') do
+      post :create, {
+          user: {
+            email: 'test@test.ru',
+            password: 'test',
+            password_confirmation: 'test'
+          }
         }
-      }
-    #assert_response :success
-    assert_redirected_to sessions_new_path
+    end
+    assert_redirected_to root_path
   end
 
 end
