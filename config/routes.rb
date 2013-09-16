@@ -3,7 +3,6 @@ TaskManager::Application.routes.draw do
 
   resources :stories
 
-  get "sessions/create"
   get "sessions/destroy"
 
   #get 'logout' => 'sessions#destroy', :as => 'logout'
