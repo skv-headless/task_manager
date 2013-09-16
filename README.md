@@ -1,1 +1,1 @@
-* [![Coverage Status](https://coveralls.io/repos/gitlabhq/gitlabhq/badge.png?branch=master)](https://coveralls.io/r/gitlabhq/gitlabhq)
+[![Coverage Status](https://coveralls.io/repos/skv-headless/task_manager/badge.png?branch=master)](https://coveralls.io/r/skv-headless/task_manager?branch=master)
