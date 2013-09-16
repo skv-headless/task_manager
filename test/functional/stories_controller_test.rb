@@ -47,18 +47,18 @@ class StoriesControllerTest < ActionController::TestCase
     assert_redirected_to story_path(assigns(:story))
   end
 
-  test 'should show story' do
-    get :show, id: @story
+  test 'should not create' do
+    assert_no_difference('Story.count') do
+      post :create, story: {}
+    end
+
     assert_response :success
   end
 
-  #test 'should be comments' do
-  #  get :show, id: @story
-  #
-  #  assert_select 'body' do |elements|
-  #    assert_select '.comment', 2
-  #  end
-  #end
+  test 'should show' do
+    get :show, id: @story
+    assert_response :success
+  end
 
   test 'should get edit' do
     get :edit, id: @story
@@ -74,11 +74,18 @@ class StoriesControllerTest < ActionController::TestCase
     assert_redirected_to story_path(assigns(:story))
   end
 
-  #test 'should destroy story' do
-  #  assert_difference('Story.count', -1) do
-  #    delete :destroy, id: @story
-  #  end
-  #
-  #  assert_redirected_to stories_path
-  #end
+  test 'should not update' do
+    put :update, id: @story, story: {
+        description: ''
+    }
+    assert_response :success
+  end
+
+  test 'should destroy story' do
+    assert_difference('Story.count', -1) do
+      delete :destroy, id: @story
+    end
+
+    assert_redirected_to stories_path
+  end
 end
