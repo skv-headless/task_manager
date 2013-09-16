@@ -16,7 +16,7 @@ class UsersControllerTest < ActionController::TestCase
           }
         }
     end
-    assert_redirected_to sessions_new_path
+    assert_redirected_to new_session_path
   end
 
   test 'should not create' do

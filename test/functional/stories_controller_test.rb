@@ -9,7 +9,7 @@ class StoriesControllerTest < ActionController::TestCase
   test 'should be redirected' do
     session[:user_id] = nil
     get :index
-    assert_redirected_to sessions_new_path
+    assert_redirected_to new_session_path
   end
 
   test 'should get index' do

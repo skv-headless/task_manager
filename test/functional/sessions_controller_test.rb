@@ -24,7 +24,7 @@ class SessionsControllerTest < ActionController::TestCase
 
   test 'should get destroy' do
     get :destroy
-    assert_redirected_to sessions_new_path
+    assert_redirected_to new_session_path
     assert_equal(nil, session[:user_id])
   end
 
