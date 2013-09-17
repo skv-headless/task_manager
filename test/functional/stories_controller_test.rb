@@ -74,7 +74,7 @@ class StoriesControllerTest < ActionController::TestCase
     assert_redirected_to story_path(assigns(:story))
   end
 
-  test 'should not update' do
+  test 'should not update without title' do
     put :update, id: @story, story: {
         description: ''
     }
