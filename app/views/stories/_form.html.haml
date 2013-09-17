@@ -1,22 +1,13 @@
-= form_for @story do |f|
+= simple_form_for(@story) do |f|
   - if @story.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@story.errors.count, "error")} prohibited this story from being saved:"
+    .alert.alert-error
+      %h5= "#{pluralize(@story.errors.count, "error")} prohibited this story from being saved:"
       %ul
         - @story.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :state
-    = f.select :state, Story.state_machine.states.map(&:name)
-  .field
-    = f.label :description
-    = f.text_area :description, :rows => 5
-  .field
-    = f.label :assigned_to
-    = f.collection_select :assigned_to_id, User.all, :id, :email, :include_blank => true
-  .actions
-    = f.submit 'Save', :class => 'btn btn-primary'
+  = f.input :title
+  = f.input :state, :collection => Story.state_machine.states.map(&:name)
+  = f.input :description, :as => :text, :input_html => {:rows => 5}
+  = f.association :assigned_to, collection: User.all, :include_blank => true
+  = f.submit 'Save', :class => 'btn btn-primary'
