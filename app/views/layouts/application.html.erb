@@ -15,7 +15,7 @@
         <% if current_user %>
           <li class="top-user-name"><%= current_user.email %></li>
           <% #TODO FIXME delete session without id parametr%>
-          <li><%= link_to 'Exit', session_path(:id => '', :method => :delete) %></li>
+          <li><%= link_to 'Exit', session_path(:id => current_user.id), :method => :delete %></li>
         <% else %>
           <li><%= link_to 'Login', new_session_path %></li>
           <li><%= link_to 'Registration', new_user_path %></li>
