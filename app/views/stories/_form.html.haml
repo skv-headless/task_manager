@@ -1,11 +1,4 @@
 = simple_form_for(@story) do |f|
-  - if @story.errors.any?
-    .alert.alert-error
-      %h5= "#{pluralize(@story.errors.count, "error")} prohibited this story from being saved:"
-      %ul
-        - @story.errors.full_messages.each do |msg|
-          %li= msg
-
   = f.input :title
   = f.input :state, :collection => Story.state_machine.states.map(&:name)
   = f.input :description, :as => :text, :input_html => {:rows => 5}
