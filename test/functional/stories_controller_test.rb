@@ -3,7 +3,8 @@ require 'test_helper'
 class StoriesControllerTest < ActionController::TestCase
   setup do
     @story = stories(:one)
-    session[:user_id] = users(:one).id
+    @user = users(:one)
+    session[:user_id] = @user.id
   end
 
   test 'should be redirected' do
@@ -19,7 +20,7 @@ class StoriesControllerTest < ActionController::TestCase
   end
 
   test 'should get filtered index' do
-    get :index, {:assigned_to_id => users(:one).id}
+    get :index, {:assigned_to_id => @user.id}
     assert_select 'table' do |elements|
       assert_select 'tr', 2 # header + 1 element
     end
@@ -72,6 +73,14 @@ class StoriesControllerTest < ActionController::TestCase
         title: @story.title
     }
     assert_redirected_to story_path(assigns(:story))
+  end
+
+  test 'should send email' do
+    assert_difference 'ActionMailer::Base.deliveries.size', +1 do
+      put :update, id: @story, story: {
+          assigned_to_id: users(:two).id,
+      }
+    end
   end
 
   test 'should not update without title' do

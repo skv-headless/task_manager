@@ -1,7 +1,7 @@
 %h1 Sign Up
 
 = simple_form_for(@user) do |f|
-  = f.input :email, :required => true
+  = f.input :email, :required => true, :autofocus => true
   = f.input :password
   = f.input :password_confirmation, :required => true
   = f.submit 'Create user', :class => 'btn'
