@@ -65,7 +65,7 @@ class StoriesController < ApplicationController
 
     respond_to do |format|
       if @story.update_attributes(params[:story])
-        if need_assignment_email?(@story)
+        if need_assignment_email?
           mail = StoryMailer.assignment_email(@story)
           mail.deliver
         end
@@ -93,7 +93,7 @@ class StoriesController < ApplicationController
 
   private
 
-  def need_assignment_email?(story)
-    (story.previous_changes.has_key?('assigned_to_id')) && (story.assigned_to_id.kind_of? Integer)
+  def need_assignment_email?
+    params[:story][:assigned_to_id].to_i > 0
   end
 end
