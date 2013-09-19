@@ -29,14 +29,4 @@ class Story < ActiveRecord::Base
       transition all - [:finished] => :rejected
     end
   end
-
-  after_save :send_assignment_email, :if => :send_assignment_email?
-
-  def send_assignment_email
-    StoryMailer.assignment_email(self).deliver
-  end
-
-  def send_assignment_email?
-    'assigned_to_id'.in?(self.changed) && self.assigned_to_id.kind_of?(Integer)
-  end
 end
