@@ -7,6 +7,12 @@ class Story < ActiveRecord::Base
   validates_presence_of :title, :description
 
   state_machine :initial => :new do
+    event :new
+    event :started
+    event :finished
+    event :accepted
+    event :rejected
+
     event :new do
       transition all => :new
     end
