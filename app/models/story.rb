@@ -2,35 +2,31 @@ class Story < ActiveRecord::Base
   belongs_to :assigned_to, :class_name => 'User'
   has_many :story_comments
 
-  attr_accessible :description, :title, :assigned_to_id, :state
+  attr_accessible :description, :title, :assigned_to_id, :state, :state_event
 
   validates_presence_of :title, :description
 
   state_machine :initial => :new do
-    event :new
-    event :started
-    event :finished
-    event :accepted
-    event :rejected
+    state :new
+    state :started
+    state :finished
+    state :accepted
+    state :rejected
 
-    event :new do
-      transition all => :new
+    event :start do
+      transition all - [:finished] => :started
     end
 
-    event :started do
-      transition all => :started
+    event :finish do
+      transition [:accepted, :started] => :finished
     end
 
-    event :finished do
-      transition all => :finished
+    event :accept do
+      transition all - [:finished] => :accepted
     end
 
-    event :accepted do
-      transition all => :accepted
-    end
-
-    event :rejected do
-      transition all => :rejected
+    event :reject do
+      transition all - [:finished] => :rejected
     end
   end
 
