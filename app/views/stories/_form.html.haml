@@ -4,5 +4,5 @@
     :label => @story.state.capitalize, label_html: { class: "label label-info" },
     :input_html => {:class => "#{hide_empty_transitions(@story)}"}
   = f.input :description, :as => :text, :input_html => {:rows => 5}
-  = f.association :assigned_to, collection: User.all, :include_blank => true
+  = f.association :assigned_to
   = f.submit 'Save', :class => 'btn btn-primary'
