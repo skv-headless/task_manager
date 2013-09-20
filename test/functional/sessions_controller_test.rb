@@ -1,19 +1,22 @@
 require 'test_helper'
 
 class SessionsControllerTest < ActionController::TestCase
+  #TODO заменить фикстуры на factory_girl
+
   test 'should get new' do
     get :new
     assert_response :success
   end
 
   test 'should login user' do
+    user = users(:one)
     post :create, {
-          email: users(:one).email,
-          password: users(:one).id,
-          password_confirmation: users(:one).id
+          email: user.email,
+          password: "",
+          password_confirmation: ""
     }
 
-    assert_equal(users(:one).id, session[:user_id])
+    assert_equal(user.id, session[:user_id])
     assert_redirected_to root_url
   end
 
