@@ -1,0 +1,4 @@
+en:
+  story_mailer:
+    assignment_email:
+      subject: "Assignment notification"
