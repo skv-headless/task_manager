@@ -1,20 +1,22 @@
 class SessionsController < ApplicationController
   def new
+    @session = UserSignInType.new
   end
 
   def create
-    user = User.find_by_email(params[:email])
-    if user.try(:authenticate, params[:password])
+    @session = UserSignInType.new(params[:user_sign_in_type])
+
+    if @session.valid?
+      user = @session.user
       sign_in(user)
-      redirect_to root_url, :notice => 'Logged in!'
+      redirect_to root_url
     else
-      flash.now.alert = 'Invalid email or password'
-      render 'new'
+      render :new
     end
   end
 
   def destroy
     sign_out
-    redirect_to new_session_path, :notice => 'Logged out!'
+    redirect_to new_session_path
   end
 end
