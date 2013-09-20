@@ -4,11 +4,11 @@ class StoriesControllerTest < ActionController::TestCase
   setup do
     @story = stories(:one)
     @user = users(:one)
-    session[:user_id] = @user.id
+    sign_in(@user)
   end
 
   test 'should be redirected' do
-    session[:user_id] = nil
+    sign_out
     get :index
     assert_redirected_to new_session_path
   end
@@ -76,9 +76,10 @@ class StoriesControllerTest < ActionController::TestCase
   end
 
   test 'should send email' do
+    second_user = users(:two)
     assert_difference 'ActionMailer::Base.deliveries.size', +1 do
       put :update, id: @story, story: {
-          assigned_to_id: users(:two).id,
+          assigned_to_id: second_user.id,
       }
     end
   end

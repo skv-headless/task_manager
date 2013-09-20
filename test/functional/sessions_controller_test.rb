@@ -16,7 +16,7 @@ class SessionsControllerTest < ActionController::TestCase
           password_confirmation: ""
     }
 
-    assert_equal(user.id, session[:user_id])
+    assert_equal(user, current_user)
     assert_redirected_to root_url
   end
 
@@ -28,7 +28,6 @@ class SessionsControllerTest < ActionController::TestCase
   test 'should get destroy' do
     delete :destroy
     assert_redirected_to new_session_path
-    assert_nil session[:user_id]
+    assert !signed_in?
   end
-
 end
