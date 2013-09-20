@@ -1,33 +1,30 @@
 require 'test_helper'
 
 class SessionsControllerTest < ActionController::TestCase
-  #TODO заменить фикстуры на factory_girl
+  setup do
+    @user = create :user
+  end
 
   test 'should get new' do
     get :new
     assert_response :success
   end
 
-  test 'should login user' do
-    user = users(:one)
-    post :create, {
-          email: user.email,
-          password: "",
-          password_confirmation: ""
-    }
+  test "should login" do
+    attrs = { email: @user.email, password: @user.password }
 
-    assert_equal(user, current_user)
-    assert_redirected_to root_url
+    post :create, user_sign_in_type: attrs
+    assert_response :redirect
+
+    assert signed_in?
   end
 
-  test 'should get create' do
-    get :create
-    assert_response :success
-  end
+  test "should logout" do
+    sign_in @user
 
-  test 'should get destroy' do
     delete :destroy
-    assert_redirected_to new_session_path
+    assert_response :redirect
+
     assert !signed_in?
   end
 end

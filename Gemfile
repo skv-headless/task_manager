@@ -33,6 +33,7 @@ gem 'coveralls', require: false
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'virtus'
 gem 'validates'
+gem 'factory_girl_rails'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
