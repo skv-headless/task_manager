@@ -23,7 +23,7 @@ class SessionsControllerTest < ActionController::TestCase
   end
 
   test 'should get destroy' do
-    delete :destroy, :id => ''
+    delete :destroy
     assert_redirected_to new_session_path
     assert_nil session[:user_id]
   end
