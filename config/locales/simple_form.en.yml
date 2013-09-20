@@ -1,5 +1,8 @@
 en:
   simple_form:
+    labels:
+      story:
+        state_event: 'Available states'
     "yes": 'Yes'
     "no": 'No'
     required:
