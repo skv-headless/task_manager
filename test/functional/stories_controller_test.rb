@@ -84,13 +84,6 @@ class StoriesControllerTest < ActionController::TestCase
     end
   end
 
-  test 'should not update without title' do
-    put :update, id: @story, story: {
-        description: ''
-    }
-    assert_response :success
-  end
-
   test 'should destroy story' do
     assert_difference('Story.count', -1) do
       delete :destroy, id: @story
