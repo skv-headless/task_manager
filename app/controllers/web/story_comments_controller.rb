@@ -1,4 +1,4 @@
-class StoryCommentsController < ApplicationController
+class Web::StoryCommentsController < ApplicationController
   # POST /story_comments
   # POST /story_comments.json
   def create

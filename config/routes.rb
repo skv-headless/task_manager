@@ -1,10 +1,11 @@
 TaskManager::Application.routes.draw do
-  resources :story_comments, :only => [:create, :destroy]
-  resources :stories
-  resources :users, :only => [:new, :create]
-  resource :session, :only => [:new, :create, :destroy]
-
-  root :to => 'stories#index'
+  scope :module => :web do
+    resources :story_comments, :only => [:create, :destroy]
+    resources :stories
+    resources :users, :only => [:new, :create]
+    resource :session, :only => [:new, :create, :destroy]
+  end
+  root :to => 'web/stories#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
