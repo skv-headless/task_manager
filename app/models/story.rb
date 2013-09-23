@@ -14,7 +14,7 @@ class Story < ActiveRecord::Base
     state :rejected
 
     event :start do
-      transition all - [:finished] => :started
+      transition [:new, :started, :accepted, :rejected] => :started
     end
 
     event :finish do
@@ -22,21 +22,11 @@ class Story < ActiveRecord::Base
     end
 
     event :accept do
-      transition all - [:finished] => :accepted
+      transition [:new, :started, :accepted, :rejected] => :accepted
     end
 
     event :reject do
-      transition all - [:finished] => :rejected
+      transition [:new, :started, :accepted, :rejected] => :rejected
     end
-  end
-
-  after_save :send_assignment_email, :if => :send_assignment_email?
-
-  def send_assignment_email
-    StoryMailer.assignment_email(self).deliver
-  end
-
-  def send_assignment_email?
-    'assigned_to_id'.in?(self.changed) && self.assigned_to_id.kind_of?(Integer)
   end
 end

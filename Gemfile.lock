@@ -29,6 +29,7 @@ GEM
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
     arel (3.0.2)
+    backports (3.3.3)
     bcrypt-ruby (3.0.1)
     better_errors (0.9.0)
       coderay (>= 1.0.0)
@@ -52,9 +53,15 @@ GEM
       simplecov (>= 0.7)
       thor
     debug_inspector (0.0.2)
+    descendants_tracker (0.0.1)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    factory_girl (4.2.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.2.1)
+      factory_girl (~> 4.2.0)
+      railties (>= 3.0.0)
     haml (4.0.3)
       tilt
     haml-rails (0.4)
@@ -143,6 +150,12 @@ GEM
     uglifier (2.1.2)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    validates (0.0.8)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+    virtus (0.5.5)
+      backports (~> 3.3)
+      descendants_tracker (~> 0.0.1)
 
 PLATFORMS
   ruby
@@ -153,6 +166,7 @@ DEPENDENCIES
   binding_of_caller
   coffee-rails (~> 3.2.1)
   coveralls
+  factory_girl_rails
   haml-rails
   jquery-rails
   pg
@@ -165,3 +179,5 @@ DEPENDENCIES
   therubyracer
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
+  validates
+  virtus

@@ -31,6 +31,9 @@ gem 'state_machine'
 gem 'coveralls', require: false
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'virtus'
+gem 'validates'
+gem 'factory_girl_rails'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

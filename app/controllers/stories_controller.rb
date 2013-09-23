@@ -65,6 +65,8 @@ class StoriesController < ApplicationController
 
     respond_to do |format|
       if @story.update_attributes(params[:story])
+        StoryMailer.assignment_email(@story).deliver if need_assignment_email?
+
         format.html { redirect_to @story, notice: 'Story was successfully updated.' }
         format.json { head :no_content }
       else
@@ -84,5 +86,11 @@ class StoriesController < ApplicationController
       format.html { redirect_to stories_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def need_assignment_email?
+    params[:story][:assigned_to_id].to_i > 0
   end
 end

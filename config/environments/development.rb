@@ -34,15 +34,6 @@ TaskManager::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
-
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-      :user_name => 'mail-trap-box-b1bd80a5076f6da5',
-      :password => '516361244854d207',
-      :address => 'mailtrap.io',
-      :port => '2525',
-      :authentication => :plain
-  }
 end
 
 BetterErrors::Middleware.allow_ip! ENV['TRUSTED_IP'] if ENV['TRUSTED_IP']
