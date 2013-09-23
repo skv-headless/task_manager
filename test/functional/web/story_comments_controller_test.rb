@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Web::StoryCommentsControllerTest < ActionController::TestCase
   setup do
-    @story_comment = story_comments(:one)
+    @story_comment = create(:story_comment)
   end
 
   test 'should create story_comment' do
