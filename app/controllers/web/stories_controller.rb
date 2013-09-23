@@ -1,4 +1,4 @@
-class Web::StoriesController < ApplicationController
+class Web::StoriesController < Web::ApplicationController
   before_filter :authenticate_user!
 
   # GET /stories
