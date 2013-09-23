@@ -1,0 +1,26 @@
+en:
+  web:
+    story_comments:
+      story_comment:
+        delete: Delete
+    stories:
+      show:
+        edit: Edit
+        back: Back
+      new:
+        back: Back
+        title: New Story
+      index:
+        title: Listing stories
+        show: Show
+        edit: Edit
+        destroy: Destroy
+        destroy_confirm: Are you sure?
+        new: New Story
+      edit:
+        show: Show
+        back: Back
+        title: Editing story
+    sessions:
+      new:
+        title: Log in

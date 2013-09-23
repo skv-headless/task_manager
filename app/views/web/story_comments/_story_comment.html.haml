@@ -2,4 +2,4 @@
   %strong
     = story_comment.author.email
   = story_comment.text
-  = link_to 'Delete', story_comment_path(story_comment), :method => :delete
+  = link_to t('.delete'), story_comment_path(story_comment), :method => :delete

@@ -1,7 +1,7 @@
 .row
   .span8
-    %h1 Listing stories
-
+    %h1
+      = t('.title')
     %table
       %tr
         %th Title
@@ -16,13 +16,13 @@
           %td= story.title
           %td= story.state
           %td= story.assigned_to
-          %td= link_to 'Show', story
-          %td= link_to 'Edit', edit_story_path(story)
-          %td= link_to 'Destroy', story, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          %td= link_to t('.show'), story
+          %td= link_to t('.edit'), edit_story_path(story)
+          %td= link_to t('.destroy'), story, :method => :delete, :data => { :confirm => t('.destroy_confirm') }
 
     %br
 
-    = link_to 'New Story', new_story_path
+    = link_to t('.new'), new_story_path
 
   .span4
     %h4
