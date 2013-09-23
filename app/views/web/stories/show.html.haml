@@ -18,8 +18,8 @@
 = render @story.story_comments.includes(:author)
 
 %p
-  = render 'story_comments/form'
+  = render 'web/story_comments/form'
 
-= link_to 'Edit', edit_story_path(@story)
+= link_to t('.edit'), edit_story_path(@story)
 \|
-= link_to 'Back', stories_path
+= link_to t('.back'), stories_path

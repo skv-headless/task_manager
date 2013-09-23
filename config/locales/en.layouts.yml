@@ -1,0 +1,8 @@
+en:
+  layouts:
+    web:
+      application:
+        name: Task manager
+        exit: Exit
+        login: Login
+        registration: Registration
