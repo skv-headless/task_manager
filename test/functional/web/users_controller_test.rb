@@ -7,29 +7,20 @@ class Web::UsersControllerTest < ActionController::TestCase
   end
 
   test 'should create' do
+    attrs = attributes_for(:user)
     assert_difference('User.count') do
-      post :create, {
-          user: {
-            email: 'test@test.ru',
-            password: 'test',
-            password_confirmation: 'test'
-          }
-        }
+      post :create, :user => attrs
     end
     assert_redirected_to new_session_path
   end
 
   test 'should not create' do
+    attrs = attributes_for(:user)
+    attrs[:password_confirmation] += 'wrong confirmation'
+
     assert_no_difference('User.count') do
-      post :create, {
-          user: {
-              email: 'test@test.ru',
-              password: 'test',
-              password_confirmation: 'test2'
-          }
-      }
+      post :create, :user => attrs
     end
     assert_response :success
   end
-
 end

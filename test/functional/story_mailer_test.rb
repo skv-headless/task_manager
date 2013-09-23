@@ -3,8 +3,8 @@ require 'test_helper'
 class StoryMailerTest < ActionMailer::TestCase
   tests StoryMailer
 
-  def setup
-    @story = stories(:one)
+  setup do
+    @story = create :story
   end
 
   test "assignment email" do

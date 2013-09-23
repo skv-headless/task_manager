@@ -2,8 +2,8 @@ require 'test_helper'
 
 class Web::StoriesControllerTest < ActionController::TestCase
   setup do
-    @story = stories(:one)
-    @user = users(:one)
+    @story = create(:story)
+    @user = @story.assigned_to
     sign_in(@user)
   end
 
@@ -27,7 +27,7 @@ class Web::StoriesControllerTest < ActionController::TestCase
 
     get :index, {:state => 'new'}
     assert_select 'table' do |elements|
-      assert_select 'tr', 3 # header + 2 elements
+      assert_select 'tr', 2 # header + 1 elements
     end
   end
 
@@ -38,11 +38,8 @@ class Web::StoriesControllerTest < ActionController::TestCase
 
   test 'should create story' do
     assert_difference('Story.count') do
-      post :create, story: {
-          description: @story.description,
-          state: @story.state,
-          title: @story.title
-      }
+      attrs = attributes_for(:story)
+      post :create, story: attrs
     end
 
     assert_redirected_to story_path(assigns(:story))
@@ -67,16 +64,15 @@ class Web::StoriesControllerTest < ActionController::TestCase
   end
 
   test 'should update story' do
-    put :update, id: @story, story: {
-        description: @story.description,
-        state: @story.state,
-        title: @story.title
-    }
+    attrs = attributes_for(:story).extract!(:description, :title)
+    put :update, id: @story, story: attrs
+    @story.reload
+    assert_equal @story.title, attrs[:title]
     assert_redirected_to story_path(assigns(:story))
   end
 
   test 'should send email' do
-    second_user = users(:two)
+    second_user = create(:user)
     assert_difference 'ActionMailer::Base.deliveries.size', +1 do
       put :update, id: @story, story: {
           assigned_to_id: second_user.id,
