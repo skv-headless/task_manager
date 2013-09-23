@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class StoryCommentsControllerTest < ActionController::TestCase
+class Web::StoryCommentsControllerTest < ActionController::TestCase
   setup do
     @story_comment = story_comments(:one)
   end
