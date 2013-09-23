@@ -6,7 +6,7 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test 'should get create' do
+  test 'should create' do
     assert_difference('User.count') do
       post :create, {
           user: {
@@ -16,7 +16,20 @@ class UsersControllerTest < ActionController::TestCase
           }
         }
     end
-    assert_redirected_to sessions_new_path
+    assert_redirected_to new_session_path
+  end
+
+  test 'should not create' do
+    assert_no_difference('User.count') do
+      post :create, {
+          user: {
+              email: 'test@test.ru',
+              password: 'test',
+              password_confirmation: 'test2'
+          }
+      }
+    end
+    assert_response :success
   end
 
 end

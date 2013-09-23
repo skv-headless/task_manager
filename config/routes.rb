@@ -1,23 +1,10 @@
 TaskManager::Application.routes.draw do
-  resources :story_comments
-
-
+  resources :story_comments, :only => [:create, :destroy]
   resources :stories
+  resources :users, :only => [:new, :create]
+  resource :session, :only => [:new, :create, :destroy]
 
-
-  get "sessions/new"
-
-  get "sessions/create"
-
-  get "sessions/destroy"
-
-  get 'logout' => 'sessions#destroy', :as => 'logout'
-  get 'login' => 'sessions#new', :as => 'login'
-  get 'signup' => 'users#new', :as => 'signup'
   root :to => 'stories#index'
-
-  resources :users
-  resources :sessions
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

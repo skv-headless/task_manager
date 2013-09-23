@@ -3,13 +3,14 @@ require 'test_helper'
 class StoriesControllerTest < ActionController::TestCase
   setup do
     @story = stories(:one)
-    session[:user_id] = users(:one).id
+    @user = users(:one)
+    sign_in(@user)
   end
 
   test 'should be redirected' do
-    session[:user_id] = nil
+    sign_out
     get :index
-    assert_redirected_to sessions_new_path
+    assert_redirected_to new_session_path
   end
 
   test 'should get index' do
@@ -19,7 +20,7 @@ class StoriesControllerTest < ActionController::TestCase
   end
 
   test 'should get filtered index' do
-    get :index, {:assigned_to_id => users(:one).id}
+    get :index, {:assigned_to_id => @user.id}
     assert_select 'table' do |elements|
       assert_select 'tr', 2 # header + 1 element
     end
@@ -47,18 +48,18 @@ class StoriesControllerTest < ActionController::TestCase
     assert_redirected_to story_path(assigns(:story))
   end
 
-  test 'should show story' do
-    get :show, id: @story
+  test 'should not create' do
+    assert_no_difference('Story.count') do
+      post :create, story: {}
+    end
+
     assert_response :success
   end
 
-  #test 'should be comments' do
-  #  get :show, id: @story
-  #
-  #  assert_select 'body' do |elements|
-  #    assert_select '.comment', 2
-  #  end
-  #end
+  test 'should show' do
+    get :show, id: @story
+    assert_response :success
+  end
 
   test 'should get edit' do
     get :edit, id: @story
@@ -74,11 +75,20 @@ class StoriesControllerTest < ActionController::TestCase
     assert_redirected_to story_path(assigns(:story))
   end
 
-  #test 'should destroy story' do
-  #  assert_difference('Story.count', -1) do
-  #    delete :destroy, id: @story
-  #  end
-  #
-  #  assert_redirected_to stories_path
-  #end
+  test 'should send email' do
+    second_user = users(:two)
+    assert_difference 'ActionMailer::Base.deliveries.size', +1 do
+      put :update, id: @story, story: {
+          assigned_to_id: second_user.id,
+      }
+    end
+  end
+
+  test 'should destroy story' do
+    assert_difference('Story.count', -1) do
+      delete :destroy, id: @story
+    end
+
+    assert_redirected_to stories_path
+  end
 end

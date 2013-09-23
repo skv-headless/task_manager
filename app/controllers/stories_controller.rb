@@ -4,13 +4,9 @@ class StoriesController < ApplicationController
   # GET /stories
   # GET /stories.json
   def index
-    if params
-      accepted_params = %w[state assigned_to_id]
-      filter_params = params.select{ |k, v| k.in? accepted_params and v.present? }
-      @stories = Story.where(filter_params)
-    else
-      @stories = Story.where({})
-    end
+    accepted_params = %w[state assigned_to_id]
+    filter_params = params.select{ |k, v| k.in? accepted_params and v.present? }
+    @stories = Story.where(filter_params)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -69,6 +65,8 @@ class StoriesController < ApplicationController
 
     respond_to do |format|
       if @story.update_attributes(params[:story])
+        StoryMailer.assignment_email(@story).deliver if need_assignment_email?
+
         format.html { redirect_to @story, notice: 'Story was successfully updated.' }
         format.json { head :no_content }
       else
@@ -88,5 +86,11 @@ class StoriesController < ApplicationController
       format.html { redirect_to stories_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def need_assignment_email?
+    params[:story][:assigned_to_id].to_i > 0
   end
 end
