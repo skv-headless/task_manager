@@ -11,7 +11,6 @@ group :assets do
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', :platforms => :ruby
-  gem 'twitter-bootstrap-rails'
   gem 'uglifier', '>= 1.0.3'
 end
 
@@ -35,6 +34,7 @@ gem 'virtus'
 gem 'validates'
 gem 'factory_girl_rails'
 gem 'test_after_commit'
+gem 'twitter-bootstrap-rails', github: "seyhunak/twitter-bootstrap-rails", branch: "bootstrap3"
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

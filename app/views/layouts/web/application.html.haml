@@ -6,8 +6,8 @@
     %title= t('.name')
   %body
     .navbar.navbar-inverse.navbar-fixed-top
-      .navbar-inner
-        .container
+      .container
+        .collapse.navbar-collapse
           %ul.nav.navbar-nav
             - if signed_in?
               %li.top-user-name
