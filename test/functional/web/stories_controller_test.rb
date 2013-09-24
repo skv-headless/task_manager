@@ -67,7 +67,7 @@ class Web::StoriesControllerTest < ActionController::TestCase
     attrs = attributes_for(:story).extract!(:description, :title)
     put :update, id: @story, story: attrs
     @story.reload
-    assert_equal @story.title, attrs[:title]
+    assert_equal attrs[:title], @story.title
     assert_redirected_to story_path(assigns(:story))
   end
 

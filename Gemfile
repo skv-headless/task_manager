@@ -34,6 +34,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'virtus'
 gem 'validates'
 gem 'factory_girl_rails'
+gem 'test_after_commit'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
