@@ -1,6 +1,6 @@
-%h1 Sign Up
-
 = simple_form_for(@user) do |f|
+  %h2
+    = t('.title')
   = f.input :email, :required => true, :autofocus => true
   = f.input :password
   = f.input :password_confirmation, :required => true

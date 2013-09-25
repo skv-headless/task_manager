@@ -23,4 +23,9 @@ en:
         title: Editing story
     sessions:
       new:
-        title: Log in
+        title: Please sign in
+        email: Email address
+        password: Password
+    users:
+      new:
+        title: Please sign up

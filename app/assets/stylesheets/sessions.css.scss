@@ -1,3 +1,15 @@
 // Place all the styles related to the sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.new_user_sign_in_type{
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+  .email{
+    margin-bottom: 0;
+    border-radius: 6px 6px 0 0;
+  }
+  .password{
+    border-radius: 0 0 6px 6px;
+  }
+}

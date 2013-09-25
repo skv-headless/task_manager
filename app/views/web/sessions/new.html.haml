@@ -1,7 +1,6 @@
-%h1
-  = t('.title')
-
-= simple_form_for @session, url: session_path do |f|
-  = f.input :email, :autofocus => true
-  = f.input :password
-  = f.button :submit
+= simple_form_for @session, url: session_path, defaults: {:label => false, :input_html => {:class => 'input-lg'}} do |f|
+  %h2
+    = t('.title')
+  = f.input :email, :autofocus => true, :placeholder => t('.email')
+  = f.input :password, :placeholder => t('.password')
+  = f.button :submit, :class => 'btn-primary btn-block btn-lg'
