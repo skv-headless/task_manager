@@ -5,5 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-user = User.create!(:email => '11@11.ru', :password => '11', :password_confirmation => '11')
-Story.create!(:description => 'test description', :title => 'test title', :assigned_to_id => user.id)
+(1..10).each do |i|
+  user = User.create!(:email => "#{i}@#{i}.ru", :password => "#{i}")
+  Story.create!(:description => "test description #{i}", :title => "test title #{i}", :assigned_to_id => user.id)
+end

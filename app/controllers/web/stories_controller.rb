@@ -6,7 +6,7 @@ class Web::StoriesController < Web::ApplicationController
   def index
     query = { s: 'created_at desc' }.merge(params[:q] || {})
     @q = Story.search(query)
-    @stories = @q.result(distinct: true)
+    @stories = @q.result(distinct: true).includes(:assigned_to)
 
     respond_to do |format|
       format.html # index.html.erb

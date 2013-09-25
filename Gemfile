@@ -19,7 +19,7 @@ end
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'rack-mini-profiler'
+  gem 'rails-footnotes', '>= 3.7.9'
 end
 
 gem 'jquery-rails'
