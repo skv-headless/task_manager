@@ -15,3 +15,10 @@ en:
       save: "Save"
       new: "New"
       delete: "Delete"
+    submit:
+      user_sign_in_type:
+        create: "Sign in"
+      user:
+        create: "Sign up"
+      story_comment:
+        create: "Comment"
