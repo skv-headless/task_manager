@@ -20,3 +20,5 @@ en:
         create: "Sign in"
       user:
         create: "Sign up"
+      story_comment:
+        create: "Comment"

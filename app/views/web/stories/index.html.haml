@@ -27,7 +27,7 @@
   .col-md-4
     %h4
       Filter By:
-    -# TODO FIXME simple form
+    -# TODO FIXME simple form буду делать вместе с ransack
     = form_tag(stories_path, :method => 'get') do
       .field
         = select_tag('state', options_for_select(Story.state_machine.states.map(&:name), params[:state]),
