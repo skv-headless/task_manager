@@ -22,3 +22,5 @@ en:
         create: "Sign up"
       story_comment:
         create: "Comment"
+      q:
+        create: Search

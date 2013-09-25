@@ -35,6 +35,7 @@ gem 'virtus'
 gem 'validates'
 gem 'factory_girl_rails'
 gem 'test_after_commit'
+gem 'ransack'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
