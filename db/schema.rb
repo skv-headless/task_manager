@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130807180159) do
+ActiveRecord::Schema.define(:version => 20130925105119) do
 
   create_table "stories", :force => true do |t|
     t.string   "title"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(:version => 20130807180159) do
   end
 
   add_index "stories", ["assigned_to_id"], :name => "index_stories_on_assigned_to_id"
+
+  create_table "story_attachments", :force => true do |t|
+    t.string   "path"
+    t.integer  "story_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "story_attachments", ["story_id"], :name => "index_story_attachments_on_story_id"
 
   create_table "story_comments", :force => true do |t|
     t.text     "text"
@@ -41,5 +50,7 @@ ActiveRecord::Schema.define(:version => 20130807180159) do
     t.datetime "updated_at",      :null => false
     t.string   "password_digest"
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
 end
