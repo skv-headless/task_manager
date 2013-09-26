@@ -37,8 +37,7 @@ gem 'factory_girl_rails'
 gem 'test_after_commit'
 gem 'ransack'
 gem 'kaminari'
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
+gem 'jbuilder'
 
 # Use unicorn as the app server
 # gem 'unicorn'
