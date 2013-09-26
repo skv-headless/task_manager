@@ -5,7 +5,12 @@ TaskManager::Application.routes.draw do
     resources :users, :only => [:new, :create]
     resource :session, :only => [:new, :create, :destroy]
   end
+
   root :to => 'web/stories#index'
+
+  namespace :api do
+    resources :stories, :only => [:index, :show]
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
