@@ -24,15 +24,6 @@ ActiveRecord::Schema.define(:version => 20130925105119) do
 
   add_index "stories", ["assigned_to_id"], :name => "index_stories_on_assigned_to_id"
 
-  create_table "story_attachments", :force => true do |t|
-    t.string   "path"
-    t.integer  "story_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "story_attachments", ["story_id"], :name => "index_story_attachments_on_story_id"
-
   create_table "story_comments", :force => true do |t|
     t.text     "text"
     t.integer  "author_id"
