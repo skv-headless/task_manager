@@ -1,6 +1,7 @@
 class Story < ActiveRecord::Base
   belongs_to :assigned_to, :class_name => 'User'
   has_many :story_comments
+  has_many :story_attachments
 
   attr_accessible :description, :title, :assigned_to_id, :state, :state_event
 
