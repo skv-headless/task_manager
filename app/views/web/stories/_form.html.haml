@@ -3,4 +3,12 @@
   = f.input :state_event, :as => :state_event
   = f.input :description, :as => :text, :input_html => {:rows => 5}
   = f.association :assigned_to
+
+  %h4= t '.attachments'
+  #storyAttachment
+    = f.simple_fields_for :story_attachments do |attachments|
+      = render 'story_attachment_fields', :f => attachments
+    .links
+      = link_to_add_association t('.add_attachment'), f, :story_attachments
+
   = f.button :submit

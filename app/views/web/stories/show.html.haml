@@ -12,6 +12,11 @@
 %p
   %b Assigned to:
   = @story.assigned_to
+%p
+  %b Attachment:
+  - @story.story_attachments.each do |attachment|
+    %span
+      = attachment.path
 
 %h2 Add comment
 
