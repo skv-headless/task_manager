@@ -39,6 +39,7 @@ gem 'ransack'
 gem 'kaminari'
 gem 'jbuilder'
 gem 'cocoon'
+gem 'carrierwave'
 
 # Use unicorn as the app server
 # gem 'unicorn'

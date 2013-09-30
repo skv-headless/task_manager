@@ -16,7 +16,7 @@
   %b Attachment:
   - @story.story_attachments.each do |attachment|
     %span
-      = attachment.path
+      = link_to(attachment.path.file.filename, attachment.path.url, :target => '_blank')
 
 %h2 Add comment
 
