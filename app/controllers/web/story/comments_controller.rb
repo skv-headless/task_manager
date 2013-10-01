@@ -7,7 +7,7 @@ class Web::Story::CommentsController < Web::ApplicationController
     @comment = Story::Comment.new(params[:story_comment])
 
     if @comment.save
-      redirect_to request.referrer, notice: 'Story comment was successfully created.'
+      redirect_to :back
     else
       render action: "new"
     end
@@ -17,6 +17,6 @@ class Web::Story::CommentsController < Web::ApplicationController
     @comment = Story::Comment.find(params[:id])
     @comment.destroy
 
-    redirect_to request.referrer
+    redirect_to :back
   end
 end
