@@ -10,15 +10,12 @@ class Web::Story::CommentsControllerTest < ActionController::TestCase
   test 'create story/comment' do
     attr = attributes_for('story/comment')
     post :create, { story_comment: attr, :story_id => @story }
-
-    comment = Story::Comment.where({:text => attr[:text]})
-    assert_equal 1, comment.size
+    assert Story::Comment.exists?({:text => attr[:text]})
   end
 
   test 'destroy story/comment' do
     delete :destroy, { id: @comment, :story_id => @story }
 
-    comment = Story::Comment.where({:id => @comment.id})
-    assert_empty comment
+    assert !Story::Comment.exists?({:id => @comment.id})
   end
 end
