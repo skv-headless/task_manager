@@ -21,6 +21,11 @@ en:
         show: Show
         back: Back
         title: Editing story
+      form:
+        attachments: Attachments
+        add_attachment: Add attachment
+      story_attachment_fields:
+        remove: remove
     sessions:
       new:
         title: Log in

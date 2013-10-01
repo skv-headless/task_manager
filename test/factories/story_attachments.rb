@@ -1,9 +1,8 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory 'story/comment' do
-    text { generate :string }
-    author
-    story
+  factory 'story/attachment' do
+    path "MyString"
+    story nil
   end
 end

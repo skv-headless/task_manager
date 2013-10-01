@@ -11,7 +11,7 @@ class Web::StoriesController < Web::ApplicationController
 
   def show
     @story = Story.find(params[:id])
-    @story_comment = StoryComment.new
+    @comment = @story.comments.build
   end
 
   def new

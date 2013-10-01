@@ -20,7 +20,7 @@ class Web::StoriesControllerTest < ActionController::TestCase
   end
 
   test 'should get filtered index' do
-    get :index, {:assigned_to_id => @user.id}
+    get :index, {:assigned_to_id => @user}
     assert_select 'table' do |elements|
       assert_select 'tr', 2 # header + 1 element
     end
@@ -37,20 +37,10 @@ class Web::StoriesControllerTest < ActionController::TestCase
   end
 
   test 'should create story' do
-    assert_difference('Story.count') do
-      attrs = attributes_for(:story)
-      post :create, story: attrs
-    end
-
+    attrs = attributes_for(:story)
+    post :create, story: attrs
+    assert Story.exists?({:title => attrs[:title]})
     assert_redirected_to story_path(assigns(:story))
-  end
-
-  test 'should not create' do
-    assert_no_difference('Story.count') do
-      post :create, story: {}
-    end
-
-    assert_response :success
   end
 
   test 'should show' do
@@ -75,16 +65,15 @@ class Web::StoriesControllerTest < ActionController::TestCase
     second_user = create(:user)
     assert_difference 'ActionMailer::Base.deliveries.size', +1 do
       put :update, id: @story, story: {
-          assigned_to_id: second_user.id,
+          assigned_to_id: second_user,
       }
     end
   end
 
   test 'should destroy story' do
-    assert_difference('Story.count', -1) do
-      delete :destroy, id: @story
-    end
+    delete :destroy, id: @story
 
+    assert !Story.exists?({:id => @story})
     assert_redirected_to stories_path
   end
 end
