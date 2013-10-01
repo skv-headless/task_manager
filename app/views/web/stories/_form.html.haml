@@ -6,9 +6,9 @@
 
   %h4= t '.attachments'
   #storyAttachment
-    = f.simple_fields_for :story_attachments do |attachments|
-      = render 'story_attachment_fields', :f => attachments
+    = f.simple_fields_for :attachments do |attachments|
+      = render 'attachment_fields', :f => attachments
     .links
-      = link_to_add_association t('.add_attachment'), f, :story_attachments
+      = link_to_add_association t('.add_attachment'), f, :attachments
 
   = f.button :submit

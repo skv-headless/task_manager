@@ -1,0 +1,5 @@
+%p.comment
+  %strong
+    = comment.author.email
+  = comment.text
+  = link_to t('.delete'), story_comment_path(@story, comment), :method => :delete

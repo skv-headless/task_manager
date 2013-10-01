@@ -14,16 +14,16 @@
   = @story.assigned_to
 %p
   %b Attachment:
-  - @story.story_attachments.each do |attachment|
+  - @story.attachments.each do |attachment|
     %span
       = link_to_attachment(attachment)
 
 %h2 Add comment
 
-= render @story.story_comments.includes(:author)
+= render @story.comments.includes(:author)
 
 %p
-  = render 'web/story_comments/form'
+  = render 'web/story/comments/form'
 
 = link_to t('.edit'), edit_story_path(@story)
 \|
