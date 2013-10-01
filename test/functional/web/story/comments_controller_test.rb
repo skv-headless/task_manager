@@ -16,6 +16,6 @@ class Web::Story::CommentsControllerTest < ActionController::TestCase
   test 'destroy story/comment' do
     delete :destroy, { id: @comment, :story_id => @story }
 
-    assert !Story::Comment.exists?({:id => @comment.id})
+    assert !Story::Comment.exists?({:id => @comment})
   end
 end
