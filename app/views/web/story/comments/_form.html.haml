@@ -1,3 +1,4 @@
 = simple_form_for(@comment, :url => story_comments_path(@story)) do |f|
+  = f.input :parent_id, :as => :hidden
   = f.input :text, :as => :text, :label => false, :input_html => {:rows => 5}
   = f.button :submit, :class => 'btn-success'

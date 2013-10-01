@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130927125150) do
+ActiveRecord::Schema.define(:version => 20131001082237) do
 
   create_table "stories", :force => true do |t|
     t.string   "title"
@@ -39,8 +39,10 @@ ActiveRecord::Schema.define(:version => 20130927125150) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "story_id"
+    t.string   "ancestry"
   end
 
+  add_index "story_comments", ["ancestry"], :name => "index_story_comments_on_ancestry"
   add_index "story_comments", ["author_id"], :name => "index_story_comments_on_author_id"
   add_index "story_comments", ["story_id"], :name => "index_story_comments_on_story_id"
 

@@ -20,7 +20,7 @@
 
 %h2 Add comment
 
-= render @story.comments.includes(:author)
+= nested_comments @story.comments.includes(:author).arrange(:order => :created_at)
 
 %p
   = render 'web/story/comments/form'

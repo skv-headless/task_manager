@@ -3,3 +3,4 @@
     = comment.author.email
   = comment.text
   = link_to t('.delete'), story_comment_path(@story, comment), :method => :delete
+  = link_to t('.reply'), new_story_comment_path(@story, :parent_id => comment)

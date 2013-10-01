@@ -2,7 +2,7 @@ TaskManager::Application.routes.draw do
   scope :module => :web do
     resources :stories do
       scope :module => :story do
-        resources :comments, :only => [:create, :destroy]
+        resources :comments, :only => [:new, :create, :destroy]
       end
     end
     resources :users, :only => [:new, :create]
