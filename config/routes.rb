@@ -14,7 +14,7 @@ TaskManager::Application.routes.draw do
   namespace :api do
     resources :stories, :only => [:index, :show] do
       scope :module => :story do
-        resources :comments, :only => [:create]
+        resources :comments, :only => [:show, :create]
       end
     end
   end

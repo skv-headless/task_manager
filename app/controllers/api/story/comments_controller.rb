@@ -1,4 +1,8 @@
 class Api::Story::CommentsController < Api::ApplicationController
+  def show
+    @comment = Story::Comment.find(params[:id])
+  end
+
   def create
     params[:story_comment].merge!({
       :author => current_user,
@@ -7,7 +11,7 @@ class Api::Story::CommentsController < Api::ApplicationController
     @comment = Story::Comment.new(params[:story_comment])
 
     if @comment.save
-      render :json => @comment, :status => :created
+      redirect_to api_story_comment_path(@comment.story_id, @comment)
     else
       render :json => {:errors => @comment.errors.full_messages}, :status => :unprocessable_entity
     end
