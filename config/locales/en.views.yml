@@ -7,11 +7,12 @@ en:
           reply: Reply
         new:
           back: Back
-          title: Add comment
+          title: Comment
     stories:
       show:
         edit: Edit
         back: Back
+        comments: Comments
       new:
         back: Back
         title: New Story

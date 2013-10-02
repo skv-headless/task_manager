@@ -12,7 +12,11 @@ TaskManager::Application.routes.draw do
   root :to => 'web/stories#index'
 
   namespace :api do
-    resources :stories, :only => [:index, :show]
+    resources :stories, :only => [:index, :show] do
+      scope :module => :story do
+        resources :comments, :only => [:create]
+      end
+    end
   end
 
   # The priority is based upon order of creation:
