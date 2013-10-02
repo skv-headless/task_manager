@@ -1,4 +1,4 @@
-= simple_form_for(@comment, :url => api_story_comments_path(@story),
+= simple_form_for(comment, :url => api_story_comments_path(@story),
  :method => :post, :remote => true, :format => :json) do |f|
   = f.input :parent_id, :as => :hidden
   = f.input :text, :as => :text, :label => false, :input_html => {:rows => 5}

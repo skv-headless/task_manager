@@ -4,3 +4,8 @@
 $('.new_story_comment').on("ajax:success", (e, data, status, xhr) ->
   window.location.reload()
 )
+
+$('.reply').on('click', (e)->
+  $(e.target).siblings('.comment-form').toggleClass('hidden')
+  false
+)
