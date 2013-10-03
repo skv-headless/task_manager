@@ -40,6 +40,7 @@ gem 'kaminari'
 gem 'jbuilder'
 gem 'cocoon'
 gem 'carrierwave'
+gem 'ancestry'
 
 # Use unicorn as the app server
 # gem 'unicorn'

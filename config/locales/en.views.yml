@@ -1,12 +1,18 @@
 en:
   web:
-    story_comments:
-      story_comment:
-        delete: Delete
+    story:
+      comments:
+        comment:
+          delete: Delete
+          reply: Reply
+        new:
+          back: Back
+          title: Comment
     stories:
       show:
         edit: Edit
         back: Back
+        comments: Comments
       new:
         back: Back
         title: New Story

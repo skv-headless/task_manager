@@ -2,7 +2,7 @@ TaskManager::Application.routes.draw do
   scope :module => :web do
     resources :stories do
       scope :module => :story do
-        resources :comments, :only => [:create, :destroy]
+        resources :comments, :only => [:new, :create, :destroy]
       end
     end
     resources :users, :only => [:new, :create]
@@ -12,7 +12,11 @@ TaskManager::Application.routes.draw do
   root :to => 'web/stories#index'
 
   namespace :api do
-    resources :stories, :only => [:index, :show]
+    resources :stories, :only => [:index, :show] do
+      scope :module => :story do
+        resources :comments, :only => [:show, :create]
+      end
+    end
   end
 
   # The priority is based upon order of creation:

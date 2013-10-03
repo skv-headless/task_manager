@@ -1,4 +1,4 @@
-%p#notice= notice
+#notice= notice
 
 %p
   %b Title:
@@ -18,12 +18,12 @@
     %span
       = link_to_attachment(attachment)
 
-%h2 Add comment
+%h2
+  = t('.comments')
 
-= render @story.comments.includes(:author)
-
-%p
-  = render 'web/story/comments/form'
+#comments
+  = nested_comments @story.comments.includes(:author).arrange(:order => :created_at)
+  = render :partial => 'web/story/comments/form', :locals => {comment: @comment}
 
 = link_to t('.edit'), edit_story_path(@story)
 \|
