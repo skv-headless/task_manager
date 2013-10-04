@@ -5,5 +5,13 @@ FactoryGirl.define do
     title
     description
     assigned_to
+
+    ignore do
+      story_attachment_count 2
+    end
+
+    after(:create) do |story, evaluator|
+      FactoryGirl.create_list('story/attachment', evaluator.story_attachment_count, story: story)
+    end
   end
 end
