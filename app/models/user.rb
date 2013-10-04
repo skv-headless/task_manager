@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
-  has_secure_password
+  attr_accessible :email, :password
 
   has_many :stories
 
-  attr_accessible :email, :password
-
   validates :email, uniqueness: true, presence: true, email: true
+
+  has_secure_password
 
   def password=(password)
     if password.present?

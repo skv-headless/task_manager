@@ -1,12 +1,14 @@
 class Story < ActiveRecord::Base
-  belongs_to :assigned_to, :class_name => 'User'
-  has_many :comments, :dependent => :destroy
-  has_many :attachments, :dependent => :destroy
-
   attr_accessible :description, :title, :assigned_to_id, :state, :state_event,
                   :attachments_attributes
 
-  validates_presence_of :title, :description
+  belongs_to :assigned_to, :class_name => 'User'
+
+  has_many :comments, :dependent => :destroy
+  has_many :attachments, :dependent => :destroy
+
+  validates :title, :presence => true
+  validates :description, :presence => true
 
   accepts_nested_attributes_for :attachments,
                                 :reject_if => :all_blank,
