@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Api::Story::CommentsControllerTest < ActionController::TestCase
+class Api::Stories::CommentsControllerTest < ActionController::TestCase
   setup do
     @comment = create('story/comment')
     @story = @comment.story

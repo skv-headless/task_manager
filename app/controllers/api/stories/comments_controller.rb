@@ -1,4 +1,4 @@
-class Api::Story::CommentsController < Api::ApplicationController
+class Api::Stories::CommentsController < Api::ApplicationController
   def show
     @comment = Story::Comment.find(params[:id])
   end

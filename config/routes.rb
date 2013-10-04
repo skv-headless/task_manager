@@ -1,7 +1,7 @@
 TaskManager::Application.routes.draw do
   scope :module => :web do
     resources :stories do
-      scope :module => :story do
+      scope :module => :stories do
         resources :comments, :only => [:new, :create, :destroy]
       end
     end
@@ -13,7 +13,7 @@ TaskManager::Application.routes.draw do
 
   namespace :api do
     resources :stories, :only => [:index, :show] do
-      scope :module => :story do
+      scope :module => :stories do
         resources :comments, :only => [:show, :create]
       end
     end

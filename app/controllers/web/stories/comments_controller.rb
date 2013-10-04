@@ -1,4 +1,4 @@
-class Web::Story::CommentsController < Web::ApplicationController
+class Web::Stories::CommentsController < Web::ApplicationController
   def new
     @story = Story.find(params[:story_id])
     @comment = @story.comments.build(:parent_id => params[:parent_id])

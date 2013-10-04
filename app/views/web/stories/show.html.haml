@@ -23,7 +23,7 @@
 
 #comments
   = nested_comments @story.comments.includes(:author).arrange(:order => :created_at)
-  = render :partial => 'web/story/comments/form', :locals => {comment: @comment}
+  = render :partial => 'web/stories/comments/form', :locals => {comment: @comment}
 
 = link_to t('.edit'), edit_story_path(@story)
 \|
