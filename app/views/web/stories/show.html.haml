@@ -14,9 +14,9 @@
   = @story.assigned_to
 %p
   %b Attachment:
-  - @story.attachments.each do |attachment|
+  - @attachments.each do |attachment|
     %span
-      = link_to_attachment(attachment)
+      = attachment.link
 
 %h2
   = t('.comments')

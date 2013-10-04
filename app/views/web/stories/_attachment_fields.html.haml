@@ -2,5 +2,5 @@
   - if f.object.new_record?
     = f.input :path, :as => :file
   - else
-    = link_to_attachment(f.object)
+    = f.object.decorate.link
   = link_to_remove_association t('.remove'), f

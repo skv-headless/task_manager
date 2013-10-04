@@ -12,6 +12,7 @@ class Web::StoriesController < Web::ApplicationController
   def show
     @story = Story.find(params[:id])
     @comment = @story.comments.build
+    @attachments = @story.attachments.decorate
   end
 
   def new

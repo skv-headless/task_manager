@@ -2,7 +2,6 @@
 
 FactoryGirl.define do
   factory 'story/attachment' do
-    path "MyString"
-    story nil
+    path { Rack::Test::UploadedFile.new(File.join(Rails.root, 'test', 'fixtures', 'file', 'example.png')) }
   end
 end
