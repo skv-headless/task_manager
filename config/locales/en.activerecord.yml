@@ -1,0 +1,9 @@
+en:
+  activerecord:
+    models:
+      story: Story
+    attributes:
+      story:
+        title: Title
+        state: State
+        assigned_to: Assigned to
