@@ -1,8 +1,7 @@
 %h2
   = t('.title')
 
--# TODO проверить в rails4, возможно не поправлено (render @comment.parent)
-= render :partial => 'comment', :object => @comment.parent if @comment.parent
+= render :partial => 'web/shared/stories/comments/form', :object => @comment.parent if @comment.parent
 
 = render 'form'
 

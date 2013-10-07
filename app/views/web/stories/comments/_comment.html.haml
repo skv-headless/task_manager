@@ -5,4 +5,4 @@
   = link_to t('.delete'), story_comment_path(@story, comment), :method => :delete
   = link_to t('.reply'), new_story_comment_path(@story, :parent_id => comment), :class => 'reply'
   .hidden.comment-form
-    = render :partial => 'web/stories/comments/form', :locals => {comment: comment.children.build}
+    = render :partial => 'web/shared/stories/comments/form', :locals => {comment: comment.children.build}
