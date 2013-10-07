@@ -8,8 +8,15 @@ class Api::Stories::CommentsControllerTest < ActionController::TestCase
 
   test 'create' do
     attrs = attributes_for('story/comment')
-    post :create, { story_comment: attrs, :story_id => @story }
+    post :create, { story_comment: attrs, :story_id => @story, :format => :json }
+    assert_response :created
     assert Story::Comment.exists?({:text => attrs[:text]})
+  end
+
+  test 'empty comment' do
+    attrs = attributes_for('story/comment', :text => '')
+    post :create, { story_comment: attrs, :story_id => @story, :format => :json }
+    assert_response :unprocessable_entity
   end
 
   test 'show' do

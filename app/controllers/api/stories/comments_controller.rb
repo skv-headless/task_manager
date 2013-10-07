@@ -8,12 +8,10 @@ class Api::Stories::CommentsController < Api::ApplicationController
       :author => current_user,
       :story_id => params[:story_id]
     })
-    @comment = Story::Comment.new(params[:story_comment])
 
-    if @comment.save
-      redirect_to api_story_comment_path(@comment.story_id, @comment)
-    else
-      render :json => {:errors => @comment.errors.full_messages}, :status => :unprocessable_entity
-    end
+    @comment = Story::Comment.new(params[:story_comment])
+    @comment.save
+
+    respond_with(@comment, :location => nil)
   end
 end

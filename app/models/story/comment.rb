@@ -4,5 +4,7 @@ class Story::Comment < ActiveRecord::Base
   belongs_to :author, :class_name => 'User'
   belongs_to :story
 
+  validates :text, presence: true
+
   has_ancestry
 end
