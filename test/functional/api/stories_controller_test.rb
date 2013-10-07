@@ -7,13 +7,13 @@ class Api::StoriesControllerTest < ActionController::TestCase
     sign_in(@user)
   end
 
-  test 'get all stories' do
-    get :index, {:format => :json}
+  test 'index' do
+    get :index, :format => :json
     assert_response :success
   end
 
-  test 'should show' do
-    get :show, {id: @story, :format => :json}
+  test 'show' do
+    get :show, :id => @story, :format => :json
     assert_response :success
   end
 end

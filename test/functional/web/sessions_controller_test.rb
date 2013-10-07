@@ -5,13 +5,13 @@ class Web::SessionsControllerTest < ActionController::TestCase
     @user = create :user
   end
 
-  test 'should get new' do
+  test 'new' do
     get :new
     assert_response :success
   end
 
-  test "should login" do
-    attrs = { email: @user.email, password: @user.password }
+  test 'login' do
+    attrs = { :email => @user.email, :password => @user.password }
 
     post :create, user_sign_in_type: attrs
     assert_response :redirect
@@ -19,7 +19,7 @@ class Web::SessionsControllerTest < ActionController::TestCase
     assert signed_in?
   end
 
-  test "should logout" do
+  test 'logout' do
     sign_in @user
 
     delete :destroy
