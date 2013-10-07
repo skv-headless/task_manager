@@ -1,6 +1,6 @@
 en:
   web:
-    story:
+    stories:
       comments:
         comment:
           delete: Delete
@@ -8,7 +8,6 @@ en:
         new:
           back: Back
           title: Comment
-    stories:
       show:
         edit: Edit
         back: Back
