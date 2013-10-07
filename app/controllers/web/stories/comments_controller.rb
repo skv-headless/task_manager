@@ -1,15 +1,14 @@
-class Web::Stories::CommentsController < Web::ApplicationController
+class Web::Stories::CommentsController < Web::Stories::ApplicationController
   def new
-    @story = Story.find(params[:story_id])
+    @story = resource_story
     @comment = @story.comments.build(:parent_id => params[:parent_id])
   end
 
   def create
-    params[:story_comment].merge!({
-      :author => current_user,
-      :story_id => params[:story_id]
-    })
-    @comment = Story::Comment.new(params[:story_comment])
+    @comment = Story::Comment.new(params[:story_comment]) do |comment|
+      comment.author = current_user
+      comment.story = resource_story
+    end
 
     if @comment.save
       redirect_to story_path(params[:story_id])
