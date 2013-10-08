@@ -9,7 +9,7 @@ class StoryMailerTest < ActionMailer::TestCase
 
   test "assignment email" do
     email = StoryMailer.assignment_email(@story).deliver
-    assert_equal ['skv-headless@yandex.ru'], email.from
-    assert_not_empty email.body.to_s
+    assert { ['skv-headless@yandex.ru'] == email.from }
+    assert { email.body.to_s.present? }
   end
 end

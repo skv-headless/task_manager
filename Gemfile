@@ -42,6 +42,7 @@ gem 'cocoon'
 gem 'carrierwave'
 gem 'ancestry'
 gem 'draper', '~> 1.0'
+gem 'wrong'
 
 # Use unicorn as the app server
 # gem 'unicorn'

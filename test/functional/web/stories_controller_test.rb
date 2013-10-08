@@ -43,7 +43,7 @@ class Web::StoriesControllerTest < ActionController::TestCase
     assert_response :redirect
 
     story = Story.where(:title => attrs[:title]).first
-    assert story
+    assert { story }
   end
 
   test 'show' do
@@ -62,7 +62,7 @@ class Web::StoriesControllerTest < ActionController::TestCase
     assert_response :redirect
 
     @story.reload
-    assert_equal attrs[:title], @story.title
+    assert { attrs[:title] == @story.title }
   end
 
   test 'email sending on update assigned' do
@@ -78,6 +78,6 @@ class Web::StoriesControllerTest < ActionController::TestCase
     delete :destroy, id: @story
     assert_response :redirect
 
-    assert !Story.exists?(:id => @story)
+    deny { Story.exists?(:id => @story) }
   end
 end
