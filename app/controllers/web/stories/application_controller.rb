@@ -1,4 +1,4 @@
-class Web::Stories::ApplicationController < ::ApplicationController
+class Web::Stories::ApplicationController < Web::ApplicationController
   helper_method :resource_story
 
   private

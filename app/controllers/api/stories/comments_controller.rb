@@ -4,11 +4,8 @@ class Api::Stories::CommentsController < Api::Stories::ApplicationController
   end
 
   def create
-    @comment = Story::Comment.new(params[:story_comment]) do |comment|
-      comment.author = current_user
-      comment.story = resource_story
-    end
-
+    @comment = resource_story.comments.build(params[:story_comment])
+    @comment.author = current_user
     @comment.save
 
     respond_with(@comment, :location => nil)

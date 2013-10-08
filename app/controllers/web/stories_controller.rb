@@ -1,5 +1,10 @@
 class Web::StoriesController < Web::ApplicationController
   before_filter :authenticate_user!
+  add_breadcrumb :index, :stories_path
+
+  before_filter only: [:show, :new, :edit] do
+    add_breadcrumb action_name.to_sym, request.fullpath
+  end
 
   def index
     query = { s: 'created_at desc' }.merge(params[:q] || {})

@@ -5,10 +5,8 @@ class Web::Stories::CommentsController < Web::Stories::ApplicationController
   end
 
   def create
-    @comment = Story::Comment.new(params[:story_comment]) do |comment|
-      comment.author = current_user
-      comment.story = resource_story
-    end
+    @comment = resource_story.comments.build(params[:story_comment])
+    @comment.author = current_user
 
     if @comment.save
       redirect_to story_path(params[:story_id])

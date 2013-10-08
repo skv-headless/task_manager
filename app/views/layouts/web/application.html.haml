@@ -20,5 +20,6 @@
               %li
                 = link_to t('.registration'), new_user_path
     .container.content-wrapper
+      = render_breadcrumbs
       = yield
     = javascript_include_tag "application"

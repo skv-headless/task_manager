@@ -1,0 +1,8 @@
+en:
+  breadcrumbs:
+    web:
+      stories:
+        index: Stories
+        show: Show
+        edit: Edit
+        new: New
