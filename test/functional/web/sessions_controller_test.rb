@@ -25,6 +25,6 @@ class Web::SessionsControllerTest < ActionController::TestCase
     delete :destroy
     assert_response :redirect
 
-    deny { signed_in? }
+    assert { !signed_in? }
   end
 end

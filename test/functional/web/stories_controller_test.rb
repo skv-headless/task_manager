@@ -78,6 +78,6 @@ class Web::StoriesControllerTest < ActionController::TestCase
     delete :destroy, id: @story
     assert_response :redirect
 
-    deny { Story.exists?(:id => @story) }
+    assert { !Story.exists?(:id => @story) }
   end
 end
