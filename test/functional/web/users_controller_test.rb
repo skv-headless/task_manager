@@ -12,6 +12,6 @@ class Web::UsersControllerTest < ActionController::TestCase
     assert_response :redirect
 
     user = User.where(:email => attrs[:email]).first
-    assert user
+    assert { user }
   end
 end

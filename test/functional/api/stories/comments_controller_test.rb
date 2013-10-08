@@ -10,7 +10,7 @@ class Api::Stories::CommentsControllerTest < ActionController::TestCase
     attrs = attributes_for('story/comment')
     post :create, story_comment: attrs, :story_id => @story, :format => :json
     assert_response :created
-    assert Story::Comment.exists?({:text => attrs[:text]})
+    assert { Story::Comment.exists?({:text => attrs[:text]}) }
   end
 
   test 'show' do

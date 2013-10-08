@@ -14,6 +14,7 @@ class ActiveSupport::TestCase
   # -- they do not yet inherit this setting
   fixtures :all
 
+  include Wrong
   include FactoryGirl::Syntax::Methods
   include Concerns::AuthManagement
 end

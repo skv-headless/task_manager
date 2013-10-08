@@ -16,7 +16,7 @@ class Web::SessionsControllerTest < ActionController::TestCase
     post :create, user_sign_in_type: attrs
     assert_response :redirect
 
-    assert signed_in?
+    assert { signed_in? }
   end
 
   test 'logout' do
@@ -25,6 +25,6 @@ class Web::SessionsControllerTest < ActionController::TestCase
     delete :destroy
     assert_response :redirect
 
-    assert !signed_in?
+    deny { signed_in? }
   end
 end
