@@ -1,6 +1,6 @@
 class Api::Stories::CommentsController < Api::Stories::ApplicationController
   def show
-    @comment = Story::Comment.find(params[:id])
+    @comment = resource_story.comments.find(params[:id])
   end
 
   def create

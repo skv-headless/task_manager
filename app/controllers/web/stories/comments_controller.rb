@@ -1,6 +1,6 @@
 class Web::Stories::CommentsController < Web::Stories::ApplicationController
   def destroy
-    @comment = Story::Comment.find(params[:id])
+    @comment = resource_story.comments.find(params[:id])
     @comment.destroy
 
     redirect_to :back
