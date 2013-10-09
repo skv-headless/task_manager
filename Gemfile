@@ -43,6 +43,7 @@ gem 'carrierwave'
 gem 'ancestry'
 gem 'draper', '~> 1.0'
 gem 'wrong'
+gem 'configus'
 
 # Use unicorn as the app server
 # gem 'unicorn'

@@ -1,5 +1,5 @@
 class StoryMailer < ActionMailer::Base
-  default from: "skv-headless@yandex.ru"
+  default from: configus.admin_email
 
   def assignment_email(story)
     @user = story.assigned_to
