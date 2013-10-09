@@ -1,11 +1,11 @@
+require 'bcrypt'
+
 class User < ActiveRecord::Base
-  attr_accessible :email, :password
+  attr_accessible :email
 
   has_many :stories
 
   validates :email, uniqueness: true, presence: true, email: true
-
-  has_secure_password
 
   def password=(password)
     if password.present?
@@ -18,7 +18,11 @@ class User < ActiveRecord::Base
     @real_password
   end
 
-  def to_s
-    self.email
+  def authenticate(unencrypted_password)
+    if BCrypt::Password.new(password_digest) == unencrypted_password
+      self
+    else
+      false
+    end
   end
 end

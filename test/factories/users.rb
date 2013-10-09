@@ -4,6 +4,9 @@ FactoryGirl.define do
   factory :user, :aliases => [:assigned_to, :author] do
     email
     password { generate :string }
-    password_confirmation { password }
+
+    factory :user_with_password_confirmation do
+      password_confirmation { password }
+    end
   end
 end
