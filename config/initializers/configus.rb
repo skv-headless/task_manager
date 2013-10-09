@@ -1,13 +1,11 @@
 Configus.build Rails.env do
   env :production do
-    admin_email "skv-headless@yandex.ru"
+    admin_email "admin@task-manager.ru"
   end
 
-  env :development do
-    admin_email "skv-headless@yandex.ru"
+  env :development, :parent => :production do
   end
 
-  env :test do
-    admin_email "skv-headless@yandex.ru"
+  env :test, :parent => :production do
   end
 end
