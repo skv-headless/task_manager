@@ -6,6 +6,6 @@ class StoryObserver < ActiveRecord::Observer
   private
 
   def need_assignment_email?(story)
-    (story.previous_changes.has_key?(:assigned_to_id)) && (!story.assigned_to_id.nil?)
+    story.previous_changes.has_key?(:assigned_to_id)
   end
 end
