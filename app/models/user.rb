@@ -25,4 +25,8 @@ class User < ActiveRecord::Base
       false
     end
   end
+
+  def to_s
+    email
+  end
 end
