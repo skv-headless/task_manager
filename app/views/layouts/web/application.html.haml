@@ -21,5 +21,6 @@
                 = link_to t('.registration'), new_user_path
     .container.content-wrapper
       = render_breadcrumbs
+      = bootstrap_flash
       = yield
     = javascript_include_tag "application"

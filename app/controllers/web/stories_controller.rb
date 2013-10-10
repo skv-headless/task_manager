@@ -32,7 +32,8 @@ class Web::StoriesController < Web::ApplicationController
     @story = Story.new(params[:story])
 
     if @story.save
-      redirect_to @story, notice: 'Story was successfully created.'
+      f(:success)
+      redirect_to @story
     else
       render action: "new"
     end
@@ -42,7 +43,8 @@ class Web::StoriesController < Web::ApplicationController
     @story = Story.find(params[:id])
 
     if @story.update_attributes(params[:story])
-      redirect_to @story, notice: 'Story was successfully updated.'
+      f(:success)
+      redirect_to @story
     else
       render action: "edit"
     end
@@ -51,7 +53,7 @@ class Web::StoriesController < Web::ApplicationController
   def destroy
     @story = Story.find(params[:id])
     @story.destroy
-
+    f(:success)
     redirect_to stories_url
   end
 end

@@ -1,0 +1,19 @@
+en:
+  flash:
+    web:
+      sessions:
+        destroy:
+          success: You are logged out
+        create:
+          success: You are logged in
+          error: Sorry
+      stories:
+        create:
+          success: Story was successfully created.
+        update:
+          success: Story was successfully updated.
+        destroy:
+          success: Story was successfully removed.
+      users:
+        create:
+          success: Signed up!

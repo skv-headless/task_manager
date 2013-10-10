@@ -44,6 +44,7 @@ gem 'ancestry'
 gem 'draper', '~> 1.0'
 gem 'wrong'
 gem 'configus'
+gem 'term-ansicolor'
 
 # Use unicorn as the app server
 # gem 'unicorn'

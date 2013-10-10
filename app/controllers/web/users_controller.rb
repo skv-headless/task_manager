@@ -6,7 +6,8 @@ class Web::UsersController < Web::ApplicationController
   def create
     @user = UserRegistrationType.new(params[:user])
     if @user.save
-      redirect_to new_session_path, :notice => 'Signed up!'
+      f(:success)
+      redirect_to new_session_path
     else
       render 'new'
     end
