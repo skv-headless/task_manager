@@ -11,7 +11,7 @@ class Api::Stories::CommentsControllerTest < ActionController::TestCase
     post :create, story_comment: attrs, :story_id => @story, :format => :json
     assert_response :created
 
-    comment = Story::Comment.where({:text => attrs[:text]}).first!
+    comment = Story::Comment.where({:text => attrs[:text]}).first
     assert { comment }
   end
 

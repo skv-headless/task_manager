@@ -42,7 +42,7 @@ class Web::StoriesControllerTest < ActionController::TestCase
     post :create, story: attrs
     assert_response :redirect
 
-    story = Story.where(:title => attrs[:title]).first!
+    story = Story.where(:title => attrs[:title]).first
     assert { story }
   end
 
